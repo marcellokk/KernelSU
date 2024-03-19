@@ -129,7 +129,7 @@ jobs:
           sed -i 's/PATCHLEVEL = 15/PATCHLEVEL = 1/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
           sed -i 's/SUBLEVEL = 144/SUBLEVEL = 68/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
           sed -i 's/5.15.144/6.1.68/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i 's/EXTRA_CMDS=''/LOCALVERSION=-uvite KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
+          sed -i 's/EXTRA_CMDS=''/LOCALVERSION=-uvite CONFIG_LOCALVERSION_AUTO=n KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
           sed -i 's/KCFLAGS/#KCFLAGS/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
           ln -sf $GITHUB_WORKSPACE/KernelSU/kernel $GKI_ROOT/common/drivers/kernelsu
           echo "[+] Add KernelSU driver to Makefile"
@@ -214,7 +214,6 @@ jobs:
             LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh CC="/usr/bin/ccache clang"
           else
             tools/bazel run --disk_cache=/home/runner/.cache/bazel --config=fast --config=stamp --lto=thin //common:kernel_aarch64_dist -- --dist_dir=dist
-            sed -i 's/CONFIG_LOCALVERSION_AUTO=y/# CONFIG_LOCALVERSION_AUTO is not set/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/defconfig
           fi
 
       - name: Prepare artifacts
