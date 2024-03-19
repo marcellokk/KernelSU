@@ -125,6 +125,11 @@ jobs:
           GKI_ROOT=$(pwd)
           echo "[+] GKI_ROOT: $GKI_ROOT"
           echo "[+] Copy KernelSU driver to $GKI_ROOT/common/drivers"
+          sed -i 's/VERSION = 5/VERSION = 6/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/PATCHLEVEL = 15/PATCHLEVEL = 1/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/SUBLEVEL = 144/SUBLEVEL = 68/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/5.15.144/6.1.68/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 'LLVM=1 DEPMOD=depmod CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-${CLANG_VERSION}/bin BUILDTOOLS_PREBUILT_BIN=build/kernel/build-tools/path/linux-x86 DTC=${ROOT_DIR}/${BUILDTOOLS_PREBUILT_BIN}/dtc/LLVM=1 DEPMOD=depmod CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-${CLANG_VERSION}/bin BUILDTOOLS_PREBUILT_BIN=build/kernel/build-tools/path/linux-x86 DTC=${ROOT_DIR}/${BUILDTOOLS_PREBUILT_BIN}/dtc EXTRA_FLAGS="LOCALVERSION=androidVanillaIceCream-5-gd4b7ca699366 KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk"/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
           ln -sf $GITHUB_WORKSPACE/KernelSU/kernel $GKI_ROOT/common/drivers/kernelsu
           echo "[+] Add KernelSU driver to Makefile"
           DRIVER_MAKEFILE=$GKI_ROOT/common/drivers/Makefile
