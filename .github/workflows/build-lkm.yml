@@ -1,6 +1,9 @@
 name: Build LKM for KernelSU
 on:
   push:
+    tags:
+      - "v*"
+  workflow_dispatch:
     branches: ["main", "ci", "checkci"]
     paths:
       - ".github/workflows/gki-kernel.yml"
