@@ -1,6 +1,9 @@
 name: Build Kernel - Android 14
 on:
   push:
+    tags:
+      - "v*"
+  workflow_dispatch:
     branches: ["main", "ci", "checkci"]
     paths:
       - ".github/workflows/build-kernel-a14.yml"
