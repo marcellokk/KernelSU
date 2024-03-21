@@ -148,7 +148,7 @@ jobs:
           echo "[+] Export all symbol from abi_gki_aarch64.xml"
           # python3 $KSU_ROOT/scripts/abi_gki_all.py $ABI_XML > $SYMBOL_LIST
           echo "[+] Add KernelSU symbols"
-          cat $KSU_ROOT/kernel/export_symbol.txt
+          # cat $KSU_ROOT/kernel/export_symbol.txt
 
       - name: Setup ccache
         if: inputs.use_cache == true
