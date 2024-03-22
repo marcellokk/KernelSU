@@ -126,13 +126,12 @@ jobs:
           echo "[+] GKI_ROOT: $GKI_ROOT"
           echo "[+] Copy KernelSU driver to $GKI_ROOT/common/drivers"
           sed -i 's/VERSION = 5/VERSION = 6/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i 's/PATCHLEVEL = 15/PATCHLEVEL = 6/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i 's/SUBLEVEL = 144/SUBLEVEL = 17/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i 's/5.15.144/6.6.17/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/PATCHLEVEL = 15/PATCHLEVEL = 7/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/SUBLEVEL = 144/SUBLEVEL = 0/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
+          sed -i 's/5.15.144/6.7.0/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
           sed -i "s/NAME = Trick or Treat/NAME = Hurr durr I'ma ninja sloth/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i "s/EXTRA_CMDS=''/LOCALVERSION=-g65dd4321eegu KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
+          sed -i "s/EXTRA_CMDS=''/LOCALVERSION=-android15-0-g65dd4321eegu KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
           sed -i 's/= "y"/= "n"/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/scripts/setlocalversion
-          sed -i 's/ld-version/ldd-version/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/init/Kconfig
           echo "[+] Add KernelSU driver to Makefile"
           echo "[+] Apply KernelSU patches"
 
@@ -187,7 +186,7 @@ jobs:
         working-directory: android-kernel
         run: |
           if [ -e build/build.sh ]; then
-            LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh CC="/usr/bin/ccache clang" CC_VERSION_TEXT="Android (10087095, +pho, +bolt, +lot, -mlgi, based on r487747c) clang version 17.0.2 (https://android.googlesource.com/toolchain/llvm-project d9f89f4d16663d5012e5c09495f3b30ece3d2362)" ldd-version="170002"
+            LTO=thin BUILD_CONFIG=common/build.config.gki.aarch64 build/build.sh CC="/usr/bin/ccache clang" CC_VERSION_TEXT="Android (11039501, +pho, +bolt, +lot, -mlgi, based on r498229b) clang version 17.0.4 (https://android.googlesource.com/toolchain/llvm-project e34ed7d63863b45858e74126edaa738e75887800)" ldd-version="170004"
           else
             tools/bazel run --disk_cache=/home/runner/.cache/bazel --config=fast --config=stamp --lto=thin //common:kernel_aarch64_dist -- --dist_dir=dist
           fi
