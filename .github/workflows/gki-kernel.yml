@@ -130,8 +130,8 @@ jobs:
           #sed -i 's/SUBLEVEL = 148/SUBLEVEL = 148/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
           #sed -i 's/5.15.148/5.15.148/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
           #sed -i "s/NAME = Trick or Treat/NAME = Trick or Treat/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/Makefile
-          sed -i "s/EXTRA_CMDS=''/LOCALVERSION=-g8fbb65973c6e KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
-          sed -i 's/= "y"/= "n"/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/scripts/setlocalversion
+          #sed -i "s/EXTRA_CMDS=''/LOCALVERSION=-g8fbb65973c6e KBUILD_BUILD_USER=lucazzzkk KBUILD_BUILD_HOST=compiuterkk/g" /home/runner/work/KernelSU/KernelSU/android-kernel/common/build.config.common
+          #sed -i 's/= "y"/= "n"/g' /home/runner/work/KernelSU/KernelSU/android-kernel/common/scripts/setlocalversion
           echo "[+] Add KernelSU driver to Makefile"
           echo "[+] Apply KernelSU patches"
 
